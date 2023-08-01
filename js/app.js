@@ -20,7 +20,7 @@ document.addEventListener( "touchmove", e => {
 
 let button = document.getElementsByClassName("button-start")[0];
 let rain = false;
-let rainSound = new Audio("../audio/rain.mp3");
+let rainSound = document.querySelector("audio");
 rainSound.loop = true;
 
 function changeRainCapacity() {
@@ -39,7 +39,6 @@ function changeRainCapacity() {
             stopRain();
             getSoundAndFadeAudio();
             rain = false;
-           
         }
     }
 }
