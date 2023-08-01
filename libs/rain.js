@@ -38,7 +38,7 @@ function RainDrops(x, y, endy, velocity, opacity) {
 }
 
 let rainArray = [];
-let rainCapacity = 140;
+let rainCapacity = 500;
 
 for (let i = 0; i < rainCapacity; i++) {
     let rainXLocation = Math.floor(Math.random() * window.innerWidth) + 1;
@@ -52,16 +52,25 @@ let anim = null;
 
 export function animateRain() {
 
-        anim = requestAnimationFrame(animateRain);
-        c.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-        for (let i = 0; i < rainArray.length; i++) {
-            rainArray[i].update();
-        }
-}
-
-export function stopRain(){
-    cancelAnimationFrame(anim)
+    anim = requestAnimationFrame(animateRain);
     c.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    for (let i = 0; i < rainArray.length; i++) {
+        rainArray[i].update();
+    }
 }
 
+export function stopRain() {
+    let fadeRain = setInterval(function () {
+        if (rainCapacity > 0) {
+            rainCapacity -= 50;
+        }
+        if (rainCapacity === 0.0) {
+            clearInterval(fadeRain);
+            cancelAnimationFrame(anim)
+            c.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            rainCapacity = 500;
+        }
+    }, 200);
+
+}
