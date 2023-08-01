@@ -39,6 +39,8 @@ function changeRainCapacity() {
             stopRain();
             getSoundAndFadeAudio();
             rain = false;
+            button.disabled = true;
+            button.classList.add('button-start__disabled');
         }
     }
 }
@@ -54,6 +56,8 @@ function getSoundAndFadeAudio () {
         }
         if (rainSound.volume === 0.0) {
             clearInterval(fadeAudio);
+            button.disabled = false;
+            button.classList.remove('button-start__disabled');
         }
     }, 200);
 
