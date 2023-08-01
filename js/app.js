@@ -40,6 +40,7 @@ function changeRainCapacity() {
             getSoundAndFadeAudio();
             rain = false;
             button.disabled = true;
+            button.innerHTML = "Waiting...";
             button.classList.add('button-start__disabled');
         }
     }
@@ -57,6 +58,7 @@ function getSoundAndFadeAudio () {
         if (rainSound.volume === 0.0) {
             clearInterval(fadeAudio);
             button.disabled = false;
+            button.innerHTML = "Start rain";
             button.classList.remove('button-start__disabled');
         }
     }, 200);
